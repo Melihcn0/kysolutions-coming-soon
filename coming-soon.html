@@ -1,0 +1,138 @@
+<!-- meta tags and other links -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ky Solutions</title>
+  <link rel="icon" type="image/png" href="assets/images/kysolutions_yatay.png" sizes="16x16">
+  <!-- remix icon font css  -->
+  <link rel="stylesheet" href="assets/css/remixicon.css">
+  <link rel="stylesheet" href="assets/css/lib/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/lib/apexcharts.css">
+  <link rel="stylesheet" href="assets/css/lib/dataTables.min.css">
+  <link rel="stylesheet" href="assets/css/lib/editor-katex.min.css">
+  <link rel="stylesheet" href="assets/css/lib/editor.atom-one-dark.min.css">
+  <link rel="stylesheet" href="assets/css/lib/editor.quill.snow.css">
+  <link rel="stylesheet" href="assets/css/lib/flatpickr.min.css">
+  <link rel="stylesheet" href="assets/css/lib/full-calendar.css">
+  <link rel="stylesheet" href="assets/css/lib/jquery-jvectormap-2.0.5.css">
+  <link rel="stylesheet" href="assets/css/lib/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/lib/slick.css">
+  <link rel="stylesheet" href="assets/css/lib/prism.css">
+  <link rel="stylesheet" href="assets/css/lib/file-upload.css">
+  <link rel="stylesheet" href="assets/css/lib/audioplayer.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+  <body>
+
+<div class="custom-bg">
+    <div class="container container--xl">
+        <div class="d-flex align-items-center justify-content-between py-24">
+        </div>
+
+        <div class="py-res-120">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h3 class="mb-32 max-w-1000-px">Yakında erişime açılacak</h3>                    
+                    <p class="text-neutral-500 max-w-700-px text-lg">Geliştirici Melih</p>
+        
+                    <div class="countdown my-56 d-flex align-items-center flex-wrap gap-md-4 gap-3" id="coming-soon">
+                        <div class="d-flex flex-column align-items-center">
+                            <h4 class="days countdown-item mb-0 w-110-px fw-medium h-110-px bg-neutral-900 w-100 h-100 rounded-circle text-white aspect-ratio-1 d-flex justify-content-center align-items-center">0</h4>
+                            <span class="text-neutral-500 text-md text-uppercase fw-medium mt-8">Gün</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center">
+                            <h4 class="hours countdown-item mb-0 w-110-px fw-medium h-110-px bg-neutral-900 w-100 h-100 rounded-circle text-white aspect-ratio-1 d-flex justify-content-center align-items-center">0</h4>
+                            <span class="text-neutral-500 text-md text-uppercase fw-medium mt-8">Saat</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center">
+                            <h4 class="minutes countdown-item mb-0 w-110-px fw-medium h-110-px bg-neutral-900 w-100 h-100 rounded-circle text-white aspect-ratio-1 d-flex justify-content-center align-items-center">0</h4>
+                            <span class="text-neutral-500 text-md text-uppercase fw-medium mt-8">Dakika</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center">
+                            <h4 class="seconds countdown-item mb-0 w-110-px fw-medium h-110-px bg-neutral-900 w-100 h-100 rounded-circle text-white aspect-ratio-1 d-flex justify-content-center align-items-center">0</h4>
+                            <span class="text-neutral-500 text-md text-uppercase fw-medium mt-8">Saniye</span>
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="col-lg-6 d-lg-block d-none">
+                    <img src="assets/images/kysolutions_yatay.png" alt="kysolutions" style="width:500px; height:500px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  <!-- jQuery library js -->
+  <script src="assets/js/lib/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/lib/apexcharts.min.js"></script>
+  <script src="assets/js/lib/dataTables.min.js"></script>
+  <script src="assets/js/lib/iconify-icon.min.js"></script>
+  <script src="assets/js/lib/jquery-ui.min.js"></script>
+  <script src="assets/js/lib/jquery-jvectormap-2.0.5.min.js"></script>
+  <script src="assets/js/lib/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="assets/js/lib/magnifc-popup.min.js"></script>
+  <script src="assets/js/lib/slick.min.js"></script>
+  <script src="assets/js/lib/prism.js"></script>
+  <script src="assets/js/lib/file-upload.js"></script>
+  <script src="assets/js/lib/audioplayer.js"></script>
+  <script src="assets/js/app.js"></script>
+
+<script>
+    (function () {
+    /***** CALCULATE THE TIME REMAINING *****/
+    function getTimeRemaining(endtime) {
+        var t = Date.parse(endtime) - Date.parse(new Date());
+
+        /***** CONVERT THE TIME TO A USEABLE FORMAT *****/
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+
+        /***** OUTPUT THE CLOCK DATA AS A REUSABLE OBJECT *****/
+        return {
+        total: t,
+        days: days,
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds,
+        };
+    }
+
+    /***** DISPLAY THE CLOCK AND STOP IT WHEN IT REACHES ZERO *****/
+    function initializeClock(id, endtime) {
+        var clock = document.getElementById(id);
+        var daysSpan = clock.querySelector(".days");
+        var hoursSpan = clock.querySelector(".hours");
+        var minutesSpan = clock.querySelector(".minutes");
+        var secondsSpan = clock.querySelector(".seconds");
+
+        function updateClock() {
+        var t = getTimeRemaining(endtime);
+
+        daysSpan.innerHTML = t.days;
+        hoursSpan.innerHTML = ("0" + t.hours).slice(-2);
+        minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
+        secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
+
+        if (t.total <= 0) {
+                clearInterval(timeinterval);
+            }
+        }
+
+        updateClock(); // run function once at first to avoid delay
+        var timeinterval = setInterval(updateClock, 1000);
+    }
+
+        /***** SET A VALID END DATE *****/
+        var deadline = '2025-10-13T23:59:59';
+        initializeClock("coming-soon", deadline);
+    })();
+</script>
+
+</body>
+</html>
